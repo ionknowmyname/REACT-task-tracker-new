@@ -7,7 +7,7 @@ const Tasks = ({ tasks, onDelete, onToggle }) => {   // or props, then props.tas
 
     return (
         <>
-            {tasks.map((task) => (
+            {tasks.map((task /* , index */) => ( // can also use index instead of task.id
                 <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />  
                 // using key prop coz each child in a map should have a unique id
             ))}  
