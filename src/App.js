@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";  
+import { useState, useEffect } from "react"  
 // useState; hook from react to enable states in functional components
 // useEffect; hook to make something happen when the page loads
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Header from "./components/Header";
-import Tasks from "./components/Tasks";
-import AddTask from "./components/AddTask";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Tasks from "./components/Tasks"
+import AddTask from "./components/AddTask"
+import About from "./components/About"
 
 function App() {
     // putting state in App level so other components can use it
@@ -93,15 +96,24 @@ function App() {
 
 
     return (
-        <div className="container">
-            <Header title="'Task Tracker'" onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-            {/* set setShowAddTask to the opposite of what showAddTask currently is; so set to true if false and vice versa */}
+        <Router>
+            <div className="container">
+                <Header title="'Task Tracker'" onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+                {/* set setShowAddTask to the opposite of what showAddTask currently is; so set to true if false and vice versa */}
 
-            {showAddTask && <AddTask onAdd={addTask} />}  
-            {/* if showAddTask is true, show the component; && is short form of doing a ternary with no else */}
+                
+                <Route path='/' exact render={(props) => (
+                    <>
+                        {showAddTask && <AddTask onAdd={addTask} />}  
+                        {/* if showAddTask is true, show the component; && is short form of doing a ternary with no else */}
 
-            {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No Tasks to Show'}
-        </div>
+                        {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No Tasks to Show'}
+                    </>
+                )} />
+                <Route path='/about' component={About} />
+                <Footer />
+            </div>
+        </Router>
     );
 }
 
