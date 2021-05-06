@@ -13,7 +13,7 @@ const AddTask = ({ onAdd }) => {
             return
         }
 
-        onAdd({ text, day, reminder })
+        onAdd({ text, day, reminder })    // actually does the adding
 
         setText('')   // clearing out form fields
         setDay('')

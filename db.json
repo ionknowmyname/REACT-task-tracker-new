@@ -4,7 +4,7 @@
       "id": 1,
       "text": "Doctor Appointment",
       "day": "Feb 7 at 1:30pm",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "id": 3,
       "text": "Meet at school",
       "day": "Feb 5 at 2:30pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "dfgdfgdfg",
